@@ -11,7 +11,11 @@ import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
 
 class MainActivity : AppCompatActivity() {
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    /*
     lateinit var mapView: MapView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         MapKitFactory.getInstance().onStart()
         super.onStart()
     }
+
+     */
 
     fun ryazanSec(view: View){
         val ryazanIntent = Intent(this, SecondActivity::class.java)

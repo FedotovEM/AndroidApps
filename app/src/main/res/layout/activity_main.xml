@@ -20,10 +20,10 @@
         app:layout_constraintVertical_bias="0.037" />
 
     <Button
-        android:onClick="ryazanSec"
         android:id="@+id/button_ryazan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
+        android:onClick="ryazanSec"
         android:text="Рязань"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,10 +33,10 @@
         app:layout_constraintVertical_bias="0.082" />
 
     <Button
-        android:onClick="kolomnaSec"
         android:id="@+id/button_kolomna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
+        android:onClick="kolomnaSec"
         android:text="Коломна"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,14 +47,13 @@
 
     <Button
         android:id="@+id/button_novgorod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
         android:onClick="novgorodSec"
         android:text="Нижний новгород"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_kolomna"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.203" />
 </androidx.constraintlayout.widget.ConstraintLayout>

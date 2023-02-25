@@ -4,56 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SportRyazan">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/city"
-        android:textSize="48sp"
+        android:text="@string/sight"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.041" />
 
     <Button
-        android:id="@+id/button_ryazan"
-        android:layout_width="185dp"
-        android:layout_height="50dp"
-        android:onClick="ryazanSec"
-        android:text="Рязань"
+        android:id="@+id/button4"
+        android:layout_width="365dp"
+        android:layout_height="65dp"
+        android:text="Аэродром &quot;Крутицы&quot;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.101" />
 
     <Button
-        android:id="@+id/button_kolomna"
-        android:layout_width="185dp"
-        android:layout_height="50dp"
-        android:onClick="kolomnaSec"
-        android:text="Коломна"
+        android:id="@+id/button5"
+        android:layout_width="365dp"
+        android:layout_height="65dp"
+        android:text="Автоспортивный комплекс ATRON"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_ryazan"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
-        android:id="@+id/button_novgorod"
-        android:layout_width="185dp"
-        android:layout_height="50dp"
-        android:onClick="novgorodSec"
-        android:text="Нижний новгород"
+        android:id="@+id/button6"
+        android:layout_width="365dp"
+        android:layout_height="65dp"
+        android:text="Скейт-парк &quot;Адреналин&quot;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_kolomna"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.263" />
 </androidx.constraintlayout.widget.ConstraintLayout>

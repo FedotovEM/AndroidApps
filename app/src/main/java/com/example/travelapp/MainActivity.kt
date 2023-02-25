@@ -1,7 +1,9 @@
 package com.example.travelapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
@@ -9,7 +11,11 @@ import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
 
 class MainActivity : AppCompatActivity() {
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    /*
     lateinit var mapView: MapView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,5 +37,25 @@ class MainActivity : AppCompatActivity() {
         mapView.onStart()
         MapKitFactory.getInstance().onStart()
         super.onStart()
+    }
+
+     */
+
+    fun ryazanSec(view: View){
+        val ryazanIntent = Intent(this, SecondActivity::class.java)
+        ryazanIntent.putExtra(SecondActivity.CITY, "Ryazan")
+        startActivity(ryazanIntent)
+    }
+
+    fun kolomnaSec(view: View){
+        val kolomnaIntent = Intent(this, SecondActivity::class.java)
+        kolomnaIntent.putExtra(SecondActivity.CITY, "Kolomna")
+        startActivity(kolomnaIntent)
+    }
+
+    fun novgorodSec(view: View){
+        val novgorodIntent = Intent(this, SecondActivity::class.java)
+        novgorodIntent.putExtra(SecondActivity.CITY, "Nizhni Novgorod")
+        startActivity(novgorodIntent)
     }
 }

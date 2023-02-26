@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MapKitFactory.setApiKey("c21953b0-c26b-4ddd-8db1-98955daa7eb9")
+        MapKitFactory.initialize(this)
     }
     /*
     lateinit var mapView: MapView

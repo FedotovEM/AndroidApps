@@ -18,16 +18,18 @@ import com.yandex.mapkit.directions.driving.DrivingSession
 import com.yandex.mapkit.directions.driving.DrivingSession.*
 import com.yandex.mapkit.directions.driving.VehicleOptions
 import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.location.FilteringMode
+import com.yandex.mapkit.location.LocationListener
+import com.yandex.mapkit.location.LocationStatus
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.runtime.Error
 
-class RoutingActivity : AppCompatActivity(), DrivingRouteListener {
+class RoutingActivity : AppCompatActivity(), DrivingRouteListener, LocationListener {
     lateinit var mapView: MapView
     lateinit var ROUTE_END_LOCATION: Point
-    lateinit var ROUTE_START_LOCATION: Point
     lateinit var locationmapkit: UserLocationLayer
     lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -40,6 +42,7 @@ class RoutingActivity : AppCompatActivity(), DrivingRouteListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_routing)
 
+        MapKitFactory.initialize(this)
         val mapKit: MapKit = MapKitFactory.getInstance()
         mapView = findViewById(R.id.mapview)
 
@@ -57,7 +60,6 @@ class RoutingActivity : AppCompatActivity(), DrivingRouteListener {
 
         ROUTE_END_LOCATION = Point(intent.getDoubleExtra(DESTINATION_LAT, 0.0),
             intent.getDoubleExtra(DESTINATION_LONG, 0.0))
-        ROUTE_START_LOCATION = Point(54.613254, 39.722577)
 
         locationmapkit = mapKit.createUserLocationLayer(mapView.mapWindow)
         locationmapkit.isVisible = true
@@ -66,21 +68,10 @@ class RoutingActivity : AppCompatActivity(), DrivingRouteListener {
         mapObjects = mapView.map.mapObjects.addCollection()
         mapObjects!!.addPlacemark(ROUTE_END_LOCATION)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                if (location != null) {
-                    ROUTE_START_LOCATION = Point(location.latitude, location.longitude)
-                }
-            }
+        val locationManager = mapKit.createLocationManager()
+        locationManager!!.requestSingleUpdate(this)
 
-        val requestPoints: ArrayList<RequestPoint> = ArrayList()
-        requestPoints.add(RequestPoint(ROUTE_START_LOCATION, RequestPointType.WAYPOINT, null))
-        requestPoints.add(RequestPoint(ROUTE_END_LOCATION, RequestPointType.WAYPOINT, null))
-
-        drivingSession = drivingRouter!!.requestRoutes(requestPoints, DrivingOptions(), VehicleOptions(), this)
-
-        mapView.map.move(CameraPosition(ROUTE_START_LOCATION, 16.0f, 0.0f, 0.0f),
+        mapView.map.move(CameraPosition(ROUTE_END_LOCATION, 16.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 2f), null)
     }
 
@@ -113,5 +104,17 @@ class RoutingActivity : AppCompatActivity(), DrivingRouteListener {
     companion object{
         val DESTINATION_LAT = "Destination_lat"
         val DESTINATION_LONG = "Destination_long"
+    }
+
+    override fun onLocationUpdated(p0: com.yandex.mapkit.location.Location) {
+        val requestPoints: ArrayList<RequestPoint> = ArrayList()
+        requestPoints.add(RequestPoint(p0.position, RequestPointType.WAYPOINT, null))
+        requestPoints.add(RequestPoint(ROUTE_END_LOCATION, RequestPointType.WAYPOINT, null))
+
+        drivingSession = drivingRouter!!.requestRoutes(requestPoints, DrivingOptions(), VehicleOptions(), this)
+    }
+
+    override fun onLocationStatusUpdated(p0: LocationStatus) {
+        //
     }
 }

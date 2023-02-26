@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="0.041" />
 
     <Button
+        android:onClick="buttonRockTrail_Click"
         android:id="@+id/button16"
         android:layout_width="365dp"
         android:layout_height="65dp"
@@ -31,6 +32,7 @@
         app:layout_constraintVertical_bias="0.127" />
 
     <Button
+        android:onClick="buttonAkademia_Click"
         android:id="@+id/button17"
         android:layout_width="365dp"
         android:layout_height="65dp"
@@ -43,6 +45,7 @@
         app:layout_constraintVertical_bias="0.187" />
 
     <Button
+        android:onClick="buttonPartizan_Click"
         android:id="@+id/button18"
         android:layout_width="365dp"
         android:layout_height="65dp"
